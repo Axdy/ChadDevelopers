@@ -17,9 +17,9 @@ subprocess.call(["rm", pathname])
 
 client = boto3.client('rekognition')
 
-response = client.detect_labels(Image={'S3Object':{'Bucket':bucket_name,'Name':filename}},MinConfidence=75)
+response = client.detect_labels(Image={'S3Object':{'Bucket':bucket_name,'Name':filename}},MinConfidence=50)
 
-human_list = ["Human", "People", "Person", "Selfie"]
+human_list = ["Human", "People", "Person", "Selfie", "Hair", "Haircut", "Beard"]
 
 print('Detected labels for ' + filename)
 for label in response['Labels']:
