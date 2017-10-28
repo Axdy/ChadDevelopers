@@ -7,46 +7,35 @@ import subprocess
 import json
 import collections
 
-s3 = boto3.client('s3')
+def find_emotion():
+    s3 = boto3.client('s3')
 
-filename = "pics/image.jpeg"
-pathname = 'image.jpeg'
-bucket_name = 'hackathon2017bucket'
+    filename = "pics/image.jpeg"
+    pathname = 'image.jpeg'
+    bucket_name = 'hackathon2017bucket'
 
-subprocess.call(["streamer", "-f", "jpeg", "-o", pathname])
+    subprocess.call(["streamer", "-f", "jpeg", "-o", pathname])
 
-s3.upload_file(pathname, bucket_name, filename)
+    s3.upload_file(pathname, bucket_name, filename)
+    subprocess.call(["rm", pathname])
 
-subprocess.call(["rm", pathname])
+    client = boto3.client('rekognition')
+    response = client.detect_faces(Image={'S3Object':{'Bucket':bucket_name,'Name':filename}}, Attributes=['ALL'])
 
-client = boto3.client('rekognition')
+    for faceDetail in response['FaceDetails']:
+            print('Here are the emotion attributes detected:')
 
-response = client.detect_faces(Image={'S3Object':{'Bucket':bucket_name,'Name':filename}}, Attributes=['ALL'])
+            output = (json.dumps(faceDetail['Emotions'], sort_keys=True))
+    	emotions = []
+    	for emotion in faceDetail['Emotions'][:]:
+            	emotions.append(emotion)
 
-for faceDetail in response['FaceDetails']:
-        print('Here are the emotion attributes detected:')
+    if emotions:
+    	max_emotion = emotions[0]
+    	for emotion in emotions:
+    		if int(emotion["Confidence"]) > int(max_emotion["Confidence"]):
+    			max_emotion = emotion
+    else:
+    	max_emotion = None
 
-        output = (json.dumps(faceDetail['Emotions'], sort_keys=True))
-	emotions = []
-	for emotion in faceDetail['Emotions'][:]:
-        	emotions.append(emotion)
-	'''
-        first_emotion_val = str(faceDetail['Emotions'][:][2]["Confidence"])
-        second_emotion_val = str(faceDetail['Emotions'][:][1]["Confidence"])
-        third_emotion_val = str(faceDetail['Emotions'][:][0]["Confidence"])'''
-'''
-emotions = {}
-emotions[first_emotion] = first_emotion_val
-emotions[second_emotion] = second_emotion_val
-emotions[third_emotion] = third_emotion_val
-'''
-if emotions:
-	max_emotion = emotions[0]
-
-	for emotion in emotions:
-		if int(emotion["Confidence"]) > int(max_emotion["Confidence"]):
-			max_emotion = emotion
-else:
-	print None
-print max_emotion
-
+    return max_emotion
