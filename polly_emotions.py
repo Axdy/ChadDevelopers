@@ -1,6 +1,5 @@
 #Creates an mp3 file of the text inserted and returns it
 import boto3
-from pygame import mixer
 import os
 
 polly = boto3.client('polly')
