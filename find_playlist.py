@@ -30,13 +30,7 @@ def find_emotion_playlist(emotion):
 
     if token:
         sp = spotipy.Spotify(auth=token)
-        #device_id = sp.devices.get('devices')[0].get('id')
-        #print(sp.currently_playing())
         sp.shuffle(state=True, device_id=device_id)
         sp.start_playback(device_id=device_id, context_uri=playlist_uri)
-        #sp.trace = False
-        #print sp.start_playback(device_id="1b08f32d97b4ae36dc6ea73629dc509ac16a114d")
-        #sp.user_playlist_create(username, "playlist", "playlist-desc")
-        #pprint.pprint(playlists)
     else:
         print("Can't get token for", username)
