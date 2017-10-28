@@ -27,6 +27,7 @@ for faceDetail in response['FaceDetails']:
         print('Here are the emotion attributes detected:')
 
         output = (json.dumps(faceDetail['Emotions'], sort_keys=True))
+        print(output)
         first_emotion = str(faceDetail['Emotions'][:][0]["Type"])
         second_emotion = str(faceDetail['Emotions'][:][1]["Type"])
         third_emotion = str(faceDetail['Emotions'][:][2]['Type'])
@@ -35,7 +36,7 @@ for faceDetail in response['FaceDetails']:
         second_emotion_val = str(faceDetail['Emotions'][:][1]["Confidence"])
         third_emotion_val = str(faceDetail['Emotions'][:][2]["Confidence"])
 
-emotions = {}
+emotions = {0,0}
 emotions[first_emotion] = first_emotion_val
 emotions[second_emotion] = second_emotion_val
 emotions[third_emotion] = third_emotion_val
