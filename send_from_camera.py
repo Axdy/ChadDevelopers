@@ -19,6 +19,9 @@ client = boto3.client('rekognition')
 
 response = client.detect_labels(Image={'S3Object':{'Bucket':bucket_name,'Name':filename}},MinConfidence=75)
 
+human_list = ["Human", "People", "Person", "Selfie"]
+
 print('Detected labels for ' + filename)
 for label in response['Labels']:
-    print (label['Name'] + ' : ' + str(label['Confidence']))
+    if label['Name'] not in human_list:
+        print (label['Name'] + ' : ' + str(label['Confidence']))
