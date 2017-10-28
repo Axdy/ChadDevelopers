@@ -40,11 +40,13 @@ emotions[first_emotion] = first_emotion_val
 emotions[second_emotion] = second_emotion_val
 emotions[third_emotion] = third_emotion_val
 '''
+if emotions:
+	max_emotion = emotions[0]
 
-max_emotion = emotions[0]
-
-for i in range(3):
-	if int(emotions[i]["Confidence"]) > int(max_emotion["Confidence"]):
-		max_emotion = emotions[i]
-
+	for emotion in emotions:
+		if int(emotion["Confidence"]) > int(max_emotion["Confidence"]):
+			max_emotion = emotion
+else:
+	print None
 print max_emotion
+
