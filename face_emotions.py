@@ -21,25 +21,18 @@ def find_emotion():
 
     client = boto3.client('rekognition')
     response = client.detect_faces(Image={'S3Object':{'Bucket':bucket_name,'Name':filename}}, Attributes=['ALL'])
-
+    emotions = []
     for faceDetail in response['FaceDetails']:
-        print('Here are the emotion attributes detected:')
-
         output = (json.dumps(faceDetail['Emotions'], sort_keys=True))
-    	emotions = []
-    	for emotion in faceDetail['Emotions'][:]:
+        for emotion in faceDetail['Emotions'][:]:
             emotions.append(emotion)
-
-    if emotions:
-    	max_emotion = emotions[0]
-    	for emotion in emotions:
-    		if int(emotion["Confidence"]) > int(max_emotion["Confidence"]):
-    			max_emotion = emotion
-    else:
-    	max_emotion = None
+    max_emotion = emotions[0]
+    for emotion in emotions:
+        if int(emotion["Confidence"]) > int(max_emotion["Confidence"]):
+            max_emotion = emotion
     final_emotion = str(max_emotion["Type"])
-    if final_emotion not in ["HAPPY", "ANGRY", "SAD", "SUPRISED", "CONFUSED"]:
-        final_emotion = None
+    if final_emotion not in ["HAPPY", "ANGRY", "SAD", "CONFUSED"]:
+        final_emotion = "DEFAULT"
     return final_emotion
 
-print find_emotion()
+#print "\n" + find_emotion()
