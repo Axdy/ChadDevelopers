@@ -8,6 +8,7 @@ def make_emotion_speech(emotion):
         text = "Hey! I don't know what you're feeling, but here's a playlist anyway."
     else:
         text = "Hey! You look " + emotion + ". Here is a playlist for your mood."
+
     spoken_text = polly.synthesize_speech(Text= text, OutputFormat= 'mp3', VoiceId = 'Joanna')
 
     with open('output.mp3', 'wb') as f:
