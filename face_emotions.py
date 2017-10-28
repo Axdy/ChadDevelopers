@@ -27,20 +27,24 @@ for faceDetail in response['FaceDetails']:
         print('Here are the emotion attributes detected:')
 
         output = (json.dumps(faceDetail['Emotions'], sort_keys=True))
-        print(output)
-        first_emotion = str(faceDetail['Emotions'][:][0]["Type"])
-        second_emotion = str(faceDetail['Emotions'][:][1]["Type"])
-        third_emotion = str(faceDetail['Emotions'][:][2]['Type'])
-
-        first_emotion_val = str(faceDetail['Emotions'][:][0]["Confidence"])
+	emotions = []
+	for i in range(3):
+        	emotions.append(faceDetail['Emotions'][:][i])
+	'''
+        first_emotion_val = str(faceDetail['Emotions'][:][2]["Confidence"])
         second_emotion_val = str(faceDetail['Emotions'][:][1]["Confidence"])
-        third_emotion_val = str(faceDetail['Emotions'][:][2]["Confidence"])
-
-emotions = {0,0}
+        third_emotion_val = str(faceDetail['Emotions'][:][0]["Confidence"])'''
+'''
+emotions = {}
 emotions[first_emotion] = first_emotion_val
 emotions[second_emotion] = second_emotion_val
 emotions[third_emotion] = third_emotion_val
+'''
 
-emotions_dict = collections.OrderedDict(sorted(emotions.items()))
+max_emotion = emotions[0]
 
-print emotions_dict
+for i in range(3):
+	if int(emotions[i]["Confidence"]) > int(max_emotion["Confidence"]):
+		max_emotion = emotions[i]
+
+print max_emotion
