@@ -23,12 +23,12 @@ def find_emotion():
     response = client.detect_faces(Image={'S3Object':{'Bucket':bucket_name,'Name':filename}}, Attributes=['ALL'])
 
     for faceDetail in response['FaceDetails']:
-            print('Here are the emotion attributes detected:')
+        print('Here are the emotion attributes detected:')
 
-            output = (json.dumps(faceDetail['Emotions'], sort_keys=True))
+        output = (json.dumps(faceDetail['Emotions'], sort_keys=True))
     	emotions = []
     	for emotion in faceDetail['Emotions'][:]:
-            	emotions.append(emotion)
+            emotions.append(emotion)
 
     if emotions:
     	max_emotion = emotions[0]
@@ -37,5 +37,9 @@ def find_emotion():
     			max_emotion = emotion
     else:
     	max_emotion = None
+    final_emotion = str(max_emotion["Type"])
+    if final_emotion not in ["HAPPY", "ANGRY", "SAD", "SUPRISED", "CONFUSED"]:
+        final_emotion = None
+    return final_emotion
 
-    return max_emotion
+print find_emotion()
