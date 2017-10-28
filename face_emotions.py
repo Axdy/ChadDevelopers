@@ -28,8 +28,8 @@ for faceDetail in response['FaceDetails']:
 
         output = (json.dumps(faceDetail['Emotions'], sort_keys=True))
 	emotions = []
-	for i in range(3):
-        	emotions.append(faceDetail['Emotions'][:][i])
+	for emotion in faceDetail['Emotions'][:]:
+        	emotions.append(emotion)
 	'''
         first_emotion_val = str(faceDetail['Emotions'][:][2]["Confidence"])
         second_emotion_val = str(faceDetail['Emotions'][:][1]["Confidence"])
