@@ -18,9 +18,11 @@ redirect_uri = "http://localhost/"
 token = util.prompt_for_user_token(username=username, scope=scope,
         client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri)
 
-happy_uri = "spotify:user:cgwest23:playlist:7asgcWtFGTbpZjl87J1OZJ"
-sad_uri = "spotify:user:noraselnes:playlist:4RPP4RcIn51WPIRFhF0pQL"
-
+happy_uri = "spotify:user:andrewmaclellan225:playlist:4c4vZDOGFrLtCXdUu5WdII"
+sad_uri = "spotify:user:andrewmaclellan225:playlist:3F2ciuEvu80QZXZxzOIjpa"
+confused_uri = "spotify:user:andrewmaclellan225:playlist:6ZoCqo5SE6hBe7ctgoF7GI"
+angry_uri = "spotify:user:andrewmaclellan225:playlist:1tbvxwYl8UTCTEuBOUYpDH"
+default_uri = "spotify:user:andrewmaclellan225:playlist:7MC5mw9ZFEUCgufyyiNPjP"
 if token:
     sp = spotipy.Spotify(auth=token)
     #print(sp.currently_playing())
