@@ -39,6 +39,10 @@
             "This web app captures a photo of you with Amazon Rekognition and based on your mood plays music from spotify"
             </p>
             
+            <div>
+                <button id="btnload">Load</button>
+            </div>
+            
             <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
             
             <script type="text/javascript">
@@ -53,7 +57,7 @@
             </script>
             
             <form method="get" action="{{ url_for('generate') }}">
-                <button id="btn" onclick="function();" type="submit" class="button">Generate</button>
+                <button id="btn" type="submit" class="button">Generate</button>
             </form>
 
             <img src="https://glennstrumpetnotes.files.wordpress.com/2012/01/thinking_of_music_color-by-pacific-retirement-services-inc.jpg">
