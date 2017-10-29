@@ -10,5 +10,5 @@ def main():
         f.write(spoken_text['AudioStream'].read())
         f.close()
     
-playsound('output.mp3')
+#playsound('output.mp3')
 
