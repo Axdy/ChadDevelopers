@@ -5,8 +5,8 @@ import subprocess
 import time
 emotion = find_emotion()
 make_emotion_speech(emotion)
-'''
-vlc = subprocess.Popen(['vlc', 'output.mp3'], shell=True)
-time.sleep(10)
-vlc.kill()'''
+
+vlc = subprocess.Popen(['cvlc', 'output.mp3'], shell=True)
+time.sleep(5)
+vlc.kill()
 find_emotion_playlist(emotion)
