@@ -18,12 +18,13 @@ def find_emotion():
     filename = "pics/image.jpeg"
     pathname = 'image00.jpeg'
     bucket_name = 'hackathon2017bucket'
-    num_of_frames = 5
-    read_name = make_name(num_of_frames-1)
-    subprocess.call(["streamer", "-t", str(num_of_frames), "-r", "1", "-f", "jpeg", "-o", pathname])
-    for i in range(num_of_frames-1):
-        subprocess.call(["rm", make_name(i)])
-    s3.upload_file(read_name, bucket_name, filename)
+    #num_of_frames = 5
+    #read_name = make_name(num_of_frames-1)
+    subprocess.call(["fswebcam", "-d", "/dev/video0", "-r", "1280x720", "--jpeg", "85", "-F", "1", pathname])
+    #subprocess.call(["streamer", "-t", str(num_of_frames), "-r", "1", "-f", "jpeg", "-o", pathname])
+    #for i in range(num_of_frames-1):
+        #subprocess.call(["rm", make_name(i)])
+    s3.upload_file(pathname, bucket_name, filename)
 
     client = boto3.client('rekognition')
     response = client.detect_faces(Image={'S3Object':{'Bucket':bucket_name,'Name':filename}}, Attributes=['ALL'])
