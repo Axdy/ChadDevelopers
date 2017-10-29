@@ -39,17 +39,21 @@
             "This web app captures a photo of you with Amazon Rekognition and based on your mood plays music from spotify"
             </p>
             
-            <img src="facebook.gif" style="display: none;" name="loading">
-                
-            <script language="javascript">
-                function showImage() {
-                    var image = document.getElementById('loading');
-                    image.style.display = '';
-                }
+            <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+            
+            <script type="text/javascript">
+                $(function()
+                  {
+                  $('#btn').click(function()
+                      {
+                                      $(this).html('<img src="facebook.gif" />');
+                                      return false;
+                      })
+                  })
             </script>
             
-            <form method="get" action="{{ url_for('generate') }}" onSubmit="return showImage();">
-                <button type="submit" class="button">Generate</button>
+            <form method="get" action="{{ url_for('generate') }}">
+                <button id="btn" onclick="function();" type="submit" class="button">Generate</button>
             </form>
 
             <img src="https://glennstrumpetnotes.files.wordpress.com/2012/01/thinking_of_music_color-by-pacific-retirement-services-inc.jpg">
