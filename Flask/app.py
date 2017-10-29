@@ -19,7 +19,7 @@ def generate(name=None):
     emotion = find_emotion()
     make_emotion_speech(emotion)
 
-    vlc = subprocess.Popen(['vlc', 'output.mp3'])
+    vlc = subprocess.Popen(['cvlc', 'output.mp3'])
     time.sleep(5)
     vlc.kill()
     find_emotion_playlist(emotion)

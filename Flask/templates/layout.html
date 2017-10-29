@@ -3,9 +3,9 @@
         <title>Welcome</title>
         <style>
             @import url(http://fonts.googleapis.com/css?family=Amatic+SC:700);
-            
+
             body{
-                text-align: center;    
+                text-align: center;
             }
         h1{
             font-family: 'Amatic SC', cursive;
@@ -13,7 +13,8 @@
             color: #8ac640;
             font-size: 2.5em;
         }
-        
+
+
         .button {
             background-color: #4CAF50;
             border: none;
@@ -25,24 +26,22 @@
             font-size: 16px;
             margin: 4px 2px;
             cursor: pointer;
-        
+
         </style>
-        
+
     </head>
     <body>
         <div class="block1">
             <h1>Hello! Welcome to Emotionify!</h1>
-            <h2>Let us play some music for you</h2>
+            <h2>Turn your emotions into music</h2>
             <p>
-            "This web app captures a photo of you and based on your mood plays music from spotify"
+            "This web app captures a photo of you with Amazon Rekognition and based on your mood plays music from spotify"
             </p>
             <form method="get" action="{{ url_for('generate') }}">
                 <button type="submit" class="button">Generate</button>
             </form>
             <img src="https://glennstrumpetnotes.files.wordpress.com/2012/01/thinking_of_music_color-by-pacific-retirement-services-inc.jpg">\
-                
+
         </div>
     </body>
 </html>
-
-
