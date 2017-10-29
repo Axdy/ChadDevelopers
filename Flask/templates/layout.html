@@ -58,14 +58,15 @@
             
             <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
             
-            <img id="loading" src="facebook.gif" style="visibility:hidden" />
+            <img id="loading" src="facebook.gif" style="display: none;" />
             
             <script type="text/javascript">
                 $(function()
                   {
                   $('#btn').click(function()
                       {
-                                  document.getElementById("loading").style.visibility="visible";
+                                  
+                                  $("#loading").show();
                       })
                   })
             </script>
