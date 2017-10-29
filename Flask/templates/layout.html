@@ -26,7 +26,8 @@
             font-size: 16px;
             margin: 4px 2px;
             cursor: pointer;
-
+        }
+        
         </style>
 
     </head>
@@ -37,10 +38,21 @@
             <p>
             "This web app captures a photo of you with Amazon Rekognition and based on your mood plays music from spotify"
             </p>
-            <form method="get" action="{{ url_for('generate') }}">
+            
+            <img src="facebook.gif" style="display: none;" name="loading">
+                
+            <script language="javascript">
+                function showImage() {
+                    var image = document.getElementById('loading');
+                    image.style.display = '';
+                }
+            </script>
+            
+            <form method="get" action="{{ url_for('generate') }}" onSubmit="return showImage();">
                 <button type="submit" class="button">Generate</button>
             </form>
-            <img src="https://glennstrumpetnotes.files.wordpress.com/2012/01/thinking_of_music_color-by-pacific-retirement-services-inc.jpg">\
+
+            <img src="https://glennstrumpetnotes.files.wordpress.com/2012/01/thinking_of_music_color-by-pacific-retirement-services-inc.jpg">
 
         </div>
     </body>
