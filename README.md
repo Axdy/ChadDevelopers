@@ -5,5 +5,6 @@ It detects the user's facial expression and plays a playlist taylored to their e
 ## Technologies
 - [AWS Rekognition](https://aws.amazon.com/rekognition/)
 - [AWS Polly](https://aws.amazon.com/polly/)
+- [AWS S3](https://aws.amazon.com/s3/)
 - [Spotify](https://developer.spotify.com/web-api/)
 
