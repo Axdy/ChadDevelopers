@@ -58,13 +58,14 @@
             
             <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
             
+            <img id="loading" src="facebook.gif" style="displa: none;" />
+            
             <script type="text/javascript">
                 $(function()
                   {
                   $('#btn').click(function()
                       {
-                                      $(this).html('<img src="facebook.gif" />');
-                                      return false;
+                                  $("loading").show();
                       })
                   })
             </script>
