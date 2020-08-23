@@ -11,8 +11,8 @@ import spotipy.util as util
 device_id = "9194bd6f8cb71719478a4eeeebefdc5336db6b5c"
 username = "andrewmaclellan225"
 scope = "user-modify-playback-state user-read-playback-state"
-client_secret="51fcbeb5347945d89be206713622124a"
-client_id="9b6d1b481b6c4fbb8f6e4a08019b124a"
+client_secret=""
+client_id=""
 redirect_uri = "http://localhost/"
 token = util.prompt_for_user_token(username=username, scope=scope,
         client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri)
