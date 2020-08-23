@@ -19,8 +19,8 @@ else:
 scope = 'playlist-modify-public'
 redirect_uri = 'http://localhost/'
 token = util.prompt_for_user_token(username=username, scope=scope,
-       client_id="63535d7c99f64320a211e80190aec7c8",
-       client_secret="51fcbeb5347945d89be206713622124a", redirect_uri=redirect_uri)
+       client_id="",
+       client_secret="", redirect_uri=redirect_uri)
 
 if token:
    sp = spotipy.Spotify(auth=token)
