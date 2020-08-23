@@ -5,8 +5,8 @@ import spotipy
 import sys
 import pprint
 
-client_id = "9b6d1b481b6c4fbb8f6e4a08019b124a"
-client_secret = "51fcbeb5347945d89be206713622124a"
+client_id = ""
+client_secret = ""
 username = 'andrewmaclellan225'
 redirect_uri = 'http://localhost/'
 scope = 'user-read-currently-playing'
